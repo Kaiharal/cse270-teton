@@ -35,7 +35,7 @@ class TestSmokeTest():
   
   def test_directoryPageTest(self):
     self.driver.get("https://kaiharal.github.io/cse270-teton/")
-    self.driver.set_window_size(1295, 687)
+    self.driver.set_window_size(1920, 1080)
     self.driver.find_element(By.LINK_TEXT, "Directory").click()
     self.driver.find_element(By.ID, "directory-grid").click()
     assert self.driver.find_element(By.CSS_SELECTOR, ".gold-member:nth-child(9) > p:nth-child(2)").text == "Teton Turf and Tree"
@@ -44,7 +44,7 @@ class TestSmokeTest():
   
   def test_homePageTest(self):
     self.driver.get("https://kaiharal.github.io/cse270-teton/")
-    self.driver.set_window_size(1295, 687)
+    self.driver.set_window_size(1920, 1080)
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".spotlight1 > .centered-image")
     assert len(elements) > 0
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".spotlight2 > h4")
@@ -55,7 +55,7 @@ class TestSmokeTest():
   
   def test_joinPageTest(self):
     self.driver.get("https://kaiharal.github.io/cse270-teton/")
-    self.driver.set_window_size(1295, 687)
+    self.driver.set_window_size(1920, 1080)
     self.driver.find_element(By.LINK_TEXT, "Join").click()
     elements = self.driver.find_elements(By.NAME, "fname")
     assert len(elements) > 0

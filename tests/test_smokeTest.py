@@ -9,15 +9,11 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.chrome.options import Options
 
 class TestSmokeTest():
   def setup_method(self, method):
-    options = Options()
-    options.add_argument("--headless=new")
-    self.driver = webdriver.Chrome(options=options)
+    self.driver = webdriver.Firefox()
     self.vars = {}
-
   
   def teardown_method(self, method):
     self.driver.quit()
@@ -35,7 +31,7 @@ class TestSmokeTest():
     WebDriverWait(self.driver, 30).until(expected_conditions.text_to_be_present_in_element((By.CSS_SELECTOR, ".errorMessage"), "Invalid username and password."))
   
   def test_directoryPageTest(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/directory.html")
+    self.driver.get("https://kaiharal.github.io/cse270-teton/")
     self.driver.set_window_size(1295, 687)
     self.driver.find_element(By.LINK_TEXT, "Directory").click()
     self.driver.find_element(By.ID, "directory-grid").click()
@@ -44,7 +40,7 @@ class TestSmokeTest():
     assert self.driver.find_element(By.CSS_SELECTOR, ".gold-member:nth-child(9) > p:nth-child(2)").text == "Teton Turf and Tree"
   
   def test_homePageTest(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/index.html")
+    self.driver.get("https://kaiharal.github.io/cse270-teton/")
     self.driver.set_window_size(1295, 687)
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".spotlight1 > .centered-image")
     assert len(elements) > 0
@@ -55,7 +51,7 @@ class TestSmokeTest():
     self.driver.find_element(By.LINK_TEXT, "Join Us").click()
   
   def test_joinPageTest(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/index.html")
+    self.driver.get("https://kaiharal.github.io/cse270-teton/")
     self.driver.set_window_size(1295, 687)
     self.driver.find_element(By.LINK_TEXT, "Join").click()
     elements = self.driver.find_elements(By.NAME, "fname")

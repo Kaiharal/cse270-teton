@@ -16,7 +16,6 @@ class TestSmokeTest():
     options.add_argument("--headless=new")
     self.driver = webdriver.Chrome(options=options)
     self.vars = {}
-
   
   def teardown_method(self, method):
     self.driver.quit()
@@ -24,7 +23,7 @@ class TestSmokeTest():
   def test_adminPageTest(self):
     self.driver.get("https://kaiharal.github.io/cse270-teton/")
     self.driver.set_window_size(1295, 687)
-    WebDriverWait(self.driver, NaN).until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "Admin")))
+    WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "Admin")))
     self.driver.find_element(By.LINK_TEXT, "Admin").click()
     elements = self.driver.find_elements(By.ID, "username")
     assert len(elements) > 0
@@ -37,7 +36,7 @@ class TestSmokeTest():
   def test_directoryPageTest(self):
     self.driver.get("https://kaiharal.github.io/cse270-teton/")
     self.driver.set_window_size(1295, 687)
-    WebDriverWait(self.driver, NaN).until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "Directory")))
+    WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "Directory")))
     self.driver.find_element(By.LINK_TEXT, "Directory").click()
     self.driver.find_element(By.ID, "directory-grid").click()
     assert self.driver.find_element(By.CSS_SELECTOR, ".gold-member:nth-child(9) > p:nth-child(2)").text == "Teton Turf and Tree"
@@ -58,7 +57,7 @@ class TestSmokeTest():
   def test_joinPageTest(self):
     self.driver.get("https://kaiharal.github.io/cse270-teton/")
     self.driver.set_window_size(1295, 687)
-    WebDriverWait(self.driver, NaN).until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "Join")))
+    WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "Join")))
     self.driver.find_element(By.LINK_TEXT, "Join").click()
     elements = self.driver.find_elements(By.NAME, "fname")
     assert len(elements) > 0
